@@ -1,34 +1,31 @@
-name: Artifact Opt
+# name: Artifact Opt
 
-on:
-  push:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
 
-  workflow_dispatch:
+#   workflow_dispatch:
 
-jobs:
-  upload-artifact:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          mkdir output/
-          echo "aloha" > output/aloha.txt
-      - uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: output/ 
-  download-artifact:
-    runs-on: ubuntu-latest
-    needs: upload-artifact
-    steps:
-      - uses: actions/download-artifact@v3
-        with:
-          name: my-artifact
-          path: output/ 
-      - run: |
-          pwd
-          ls -al
-          cat output/aloha.txt
-
-      
- 
+# jobs:
+#   upload-artifact:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: |
+#           mkdir output/
+#           echo "aloha" > output/aloha.txt
+#       - uses: actions/upload-artifact@v3
+#         with:
+#           name: my-artifact
+#           path: output/ 
+#   download-artifact:
+#     runs-on: ubuntu-latest
+#     needs: upload-artifact
+#     steps:
+#       - uses: actions/download-artifact@v3
+#         with:
+#           name: my-artifact
+#           path: output/ 
+#       - run: |
+#           pwd
+#           ls -al
+#           cat output/aloha.txt
