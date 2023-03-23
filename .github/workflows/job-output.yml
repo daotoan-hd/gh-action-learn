@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: get input from input job
         run: |
-          echo "${{ needs.build.outputs.from_input }}"
+          echo "${{ needs.input.outputs.from_input }}"
 
       
  
