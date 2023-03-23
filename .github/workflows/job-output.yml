@@ -13,8 +13,7 @@ jobs:
       from_input: ${{ steps.publish.outputs.variable_input }} # use github context `steps`
     steps:
       - name: gennerate output
-        run: |
-          echo variable_input="Hello from input job" >> "$GUTHUB_OUTPUT"
+        run: echo "variable_input=Hello from input job" >> "$GUTHUB_OUTPUT"
         id: publish
   ouput:
     runs-on: ubuntu-latest
