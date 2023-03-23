@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: gennerate output
         run: |
-          echo variable_input="Hello from input job" >> $GUTHUB_OUTPUT
+          echo variable_input="Hello from input job" >> "$GUTHUB_OUTPUT"
         id: publish
   ouput:
     runs-on: ubuntu-latest
