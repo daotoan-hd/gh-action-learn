@@ -1,4 +1,4 @@
-name: job output
+name: Cache dependencies
 
 on:
   push:
