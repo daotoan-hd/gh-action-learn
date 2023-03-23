@@ -1,0 +1,32 @@
+name: Artifact Opt
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  create-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: create artifact
+        run: |
+          mkdir -p output
+          whoami > output/out.txt
+
+  upload-artifact:
+    runs-on: ubuntu-latest
+    needs: create-artifact
+    steps:
+      - run: |
+          pwd
+          ls -al
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: output/ 
+
+      
+ 
