@@ -1,4 +1,4 @@
-name: Artifact Opt
+name: job output
 
 on:
   push:
