@@ -19,6 +19,7 @@ jobs:
           echo $WORKFLOW_ENV_LEVEL
           echo $TEST_ENV
           echo ${{ env.ANOTHER_ENV }}
+          echo ${{ env }}
   build:
     runs-on: ubuntu-latest
     env:
