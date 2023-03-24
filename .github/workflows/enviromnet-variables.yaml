@@ -1,0 +1,27 @@
+name: environment variable
+
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+env:
+  WORKFLOW_ENV_LEVEL: "This is from workflow"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      TEST_ENV: "This is from test job"
+    steps:
+      - run: |
+          echo $WORKFLOW_ENV_LEVEL
+          echo $TEST_ENV
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BUILD_ENV: "This is from build job"
+    steps:
+      - run: |
+          echo $WORKFLOW_ENV_LEVEL
+          echo $BUILD_ENV
