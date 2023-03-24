@@ -13,10 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TEST_ENV: "This is from test job"
+      ANOTHER_ENV: "This is another env from test"
     steps:
       - run: |
           echo $WORKFLOW_ENV_LEVEL
           echo $TEST_ENV
+          echo ${{ env.ANOTHER_ENV }}
   build:
     runs-on: ubuntu-latest
     env:
