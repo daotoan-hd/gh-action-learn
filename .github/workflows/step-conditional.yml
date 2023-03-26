@@ -16,6 +16,7 @@ jobs:
         id: run-test
         run: command-failed 2> errors.txt
       - name: upload failed test result
+        if: failure() && steps.run-test.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
