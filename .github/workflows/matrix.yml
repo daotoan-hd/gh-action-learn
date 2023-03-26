@@ -8,6 +8,13 @@ jobs:
       matrix:
         version: [10, 12, 14]
         os: [ubuntu-latest, windows-latest]
+        include:
+          - version: 18
+            os: ubuntu-lastet
+        exclude:
+          - version: 10
+            os: windows-latest
+
     runs-on:  ${{ matrix.os }}
     steps:
       - name: get code
