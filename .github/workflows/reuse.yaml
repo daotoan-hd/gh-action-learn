@@ -16,3 +16,5 @@ jobs:
     uses: ./.github/workflows/reuseable-src.yaml
     with:
       artifact-name: my-dist
+    # secrets:
+    #   some-secret: ${{ secrets.some-secret }}
