@@ -14,8 +14,12 @@ jobs:
           key: cache-{{ hashFiles('**/package-lock.json') }} # use hash for checking change of package file
       - name: install package
         run: npm ci
-      - name: curl to nginx service
+      - name: curl to nginx 1 service
         run: curl nginx
+      - name: curl to nginx 2 service
+        run: curl nginx-2
     services:
       nginx:
+        image: nginx
+      nginx-2:
         image: nginx
