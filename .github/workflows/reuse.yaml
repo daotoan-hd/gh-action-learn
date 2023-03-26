@@ -3,6 +3,4 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/reuseable-src.yaml
+    uses: ./.github/workflows/reuseable-src.yaml
