@@ -1,0 +1,11 @@
+name: Javascript custom action
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Javascript action
+        uses: ./.github/actions/javascript-sample
+        with:
+          who-to-greet: 'HO CHI MINH'
