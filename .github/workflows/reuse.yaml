@@ -13,6 +13,7 @@ jobs:
           name: my-dist
           path: package.json
   build:
+    needs: test
     uses: ./.github/workflows/reuseable-src.yaml
     with:
       artifact-name: my-dist
