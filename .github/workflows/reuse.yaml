@@ -1,0 +1,9 @@
+name: matrix workflow
+on: push
+
+jobs:
+  build:
+    runs-on:  ubuntu-latest
+    steps:
+      - name: re-use
+        uses: ./.github/workflows/reuseable-src.yaml
