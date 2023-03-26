@@ -10,9 +10,15 @@ on:
     secrets:
       some-secret:
         required: false
+    outputs:
+      result:
+        description: The value of the step
+        value: ${{ jobs.deploys.outputs.outcome }}
 
 jobs:
   build:
+    outputs:
+      outcome: ${{ steps.set-result.outputs.step-result }}
     runs-on:  ubuntu-latest
     steps:
       - name: get artifact
@@ -21,4 +27,7 @@ jobs:
           name: ${{ inputs.artifact-name }}
       - name: list folder
         run: ls -al
+      - name: set output result
+        id: step-result
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
           
