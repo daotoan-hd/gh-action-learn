@@ -17,7 +17,28 @@ jobs:
       - name: curl to nginx 1 service
         run: curl nginx
       - name: curl to nginx 2 service
-        run: curl nginx-2:81
+        run: curl nginx-2
+    services:
+      nginx:
+        image: nginx
+      nginx-2:
+        image: nginx
+
+  test-2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        id: cache
+        with:
+          path: ~/.npm
+          key: cache-{{ hashFiles('**/package-lock.json') }} # use hash for checking change of package file
+      - name: install package
+        run: npm ci
+      - name: curl to nginx 1 service
+        run: curl localhost
+      - name: curl to nginx 2 service
+        run: curl localhost:81
     services:
       nginx:
         ports:
