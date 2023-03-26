@@ -1,0 +1,18 @@
+name: matrix workflow
+on: push
+
+jobs:
+  build:
+    continue-on-error: true
+    strategy:
+      matrix:
+        version: [10, 12, 14]
+        os: [ubuntu-latest, windows-latest]
+    runs-on:  ${{ matrix.os }}
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install node version
+        uses: actions/setup-node@v3
+        with:
+          node-version:  ${{ matrix.version }}
