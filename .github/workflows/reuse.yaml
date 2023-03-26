@@ -1,6 +1,18 @@
 name: reuse workflow
 on: push
 
+
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: upload-artifact
+        uses: upload-artifact@v3
+        with:
+          name: my-dist
+          path: package.json
   build:
     uses: ./.github/workflows/reuseable-src.yaml
+    with:
+      artifact-name: my-dist

@@ -1,22 +1,21 @@
 name: reuseable workflow src
-on: workflow_call
+on: 
+  workflow_call:
+    inputs:
+      artifact-name:
+        description: "The name of artifact"
+        required: false
+        default: dist
+        type: string
 
 jobs:
-  test:
-    runs-on:  ubuntu-latest
-    steps:
-      - name: get code
-        uses: actions/checkout@v3
-      - name: install node version
-        uses: actions/setup-node@v3
-        with:
-          node-version:  14
   build:
     runs-on:  ubuntu-latest
     steps:
-      - name: get code
-        uses: actions/checkout@v3
-      - name: install node version
-        uses: actions/setup-node@v3
+      - name: get artifact
+        uses: actions/download-artifact@v3
         with:
-          node-version:  14
+          name: ${{ artifact-name }}
+      - name: list folder
+        run: ls -al
+          
