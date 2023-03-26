@@ -1,34 +1,34 @@
-name: reuseable workflow src
-on:
-  workflow_call:
-    inputs:
-      artifact-name:
-        description: "The name of artifact"
-        required: false
-        default: dist
-        type: string
-    secrets:
-      some-secret:
-        required: false
-    outputs:
-      result:
-        description: The value of the step
-        value: ${{ jobs.build.outputs.outcome }}
+# name: reuseable workflow src
+# on:
+#   workflow_call:
+#     inputs:
+#       artifact-name:
+#         description: "The name of artifact"
+#         required: false
+#         default: dist
+#         type: string
+#     secrets:
+#       some-secret:
+#         required: false
+#     outputs:
+#       result:
+#         description: The value of the step
+#         value: ${{ jobs.build.outputs.outcome }}
 
-jobs:
-  build:
-    outputs:
-      outcome: ${{ steps.step-result.outputs.result }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: get artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: ${{ inputs.artifact-name }}
-      - name: list folder
-        run: ls -al
-      - name: set output result
-        id: step-result
-        run: echo "result=success" >> $GITHUB_OUTPUT
-      - name: print output
-        run: echo ${{steps.step-result.outputs.result}}
+# jobs:
+#   build:
+#     outputs:
+#       outcome: ${{ steps.step-result.outputs.result }}
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: get artifact
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: ${{ inputs.artifact-name }}
+#       - name: list folder
+#         run: ls -al
+#       - name: set output result
+#         id: step-result
+#         run: echo "result=success" >> $GITHUB_OUTPUT
+#       - name: print output
+#         run: echo ${{steps.step-result.outputs.result}}

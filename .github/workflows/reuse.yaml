@@ -1,26 +1,26 @@
-name: reuse workflow
-on: push
+# name: reuse workflow
+# on: push
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: upload-artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-dist
-          path: package.json
-  build:
-    needs: test
-    uses: ./.github/workflows/reuseable-src.yaml
-    with:
-      artifact-name: my-dist
-    # secrets:
-    #   some-secret: ${{ secrets.some-secret }}
-  print-output:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: print output of reuseable-src
-        run: echo ${{ needs.build.outputs.result }}
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: upload-artifact
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: my-dist
+#           path: package.json
+#   build:
+#     needs: test
+#     uses: ./.github/workflows/reuseable-src.yaml
+#     with:
+#       artifact-name: my-dist
+#     # secrets:
+#     #   some-secret: ${{ secrets.some-secret }}
+#   print-output:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: print output of reuseable-src
+#         run: echo ${{ needs.build.outputs.result }}
