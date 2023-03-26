@@ -1,53 +1,53 @@
-name: continue on error
+# name: continue on error
 
-on:
-  push:
-    branches: ["main"]
+# on:
+#   push:
+#     branches: ["main"]
 
-  workflow_dispatch:
+#   workflow_dispatch:
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: install dependencies
-        run: echo "installing dependencies"
-      - name: run test
-        continue-on-error: true
-        id: run-test
-        run: command-failed 2> errors.txt
-      - name: upload failed test result
-        if: failure() && steps.run-test.outcome == 'failure' # conditonal function and conditional
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-report
-          path: errors.txt
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: install dependencies
+#         run: echo "installing dependencies"
+#       - name: run test
+#         continue-on-error: true
+#         id: run-test
+#         run: command-failed 2> errors.txt
+#       - name: upload failed test result
+#         if: failure() && steps.run-test.outcome == 'failure' # conditonal function and conditional
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: test-report
+#           path: errors.txt
 
-  build:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: get input from input job
-        run: |
-          echo "Building ..."
+#   build:
+#     runs-on: ubuntu-latest
+#     needs: test
+#     steps:
+#       - name: get input from input job
+#         run: |
+#           echo "Building ..."
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: get input from input job
-        run: |
-          echo "Deploying ... "
+#   deploy:
+#     runs-on: ubuntu-latest
+#     needs: build
+#     steps:
+#       - name: get input from input job
+#         run: |
+#           echo "Deploying ... "
 
-  report:
-    runs-on: ubuntu-latest
-    if: failure()
-    needs:
-      - test
-      - build
-      - deploy
-    steps:
-      - name: Output infomation
-        run: |
-          echo "Something went wrong"
-          echo "${{ toJSON(github) }}"
+#   report:
+#     runs-on: ubuntu-latest
+#     if: failure()
+#     needs:
+#       - test
+#       - build
+#       - deploy
+#     steps:
+#       - name: Output infomation
+#         run: |
+#           echo "Something went wrong"
+#           echo "${{ toJSON(github) }}"
