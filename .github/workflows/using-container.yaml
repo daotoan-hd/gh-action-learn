@@ -17,9 +17,13 @@ jobs:
       - name: curl to nginx 1 service
         run: curl nginx
       - name: curl to nginx 2 service
-        run: curl nginx-2
+        run: curl nginx-2:81
     services:
       nginx:
+        ports:
+          - 80:80
         image: nginx
       nginx-2:
+        ports:
+          - 81:80
         image: nginx
