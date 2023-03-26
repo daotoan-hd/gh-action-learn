@@ -18,7 +18,7 @@ jobs:
       artifact-name: my-dist
     # secrets:
     #   some-secret: ${{ secrets.some-secret }}
-  print-out-put:
+  print-output:
     needs: build
     runs-on: ubuntu-latest
     steps:

@@ -1,5 +1,5 @@
 name: reuseable workflow src
-on: 
+on:
   workflow_call:
     inputs:
       artifact-name:
@@ -18,8 +18,8 @@ on:
 jobs:
   build:
     outputs:
-      outcome: ${{ steps.set-result.outputs.step-result }}
-    runs-on:  ubuntu-latest
+      outcome: ${{ steps.step-result.outputs.result }}
+    runs-on: ubuntu-latest
     steps:
       - name: get artifact
         uses: actions/download-artifact@v3
@@ -29,5 +29,6 @@ jobs:
         run: ls -al
       - name: set output result
         id: step-result
-        run: echo "step-result=success" >> $GITHUB_OUTPUT
-          
+        run: echo "result=success" >> $GITHUB_OUTPUT
+      - name: print output
+        run: echo ${{steps.step-result.outputs.result}}
