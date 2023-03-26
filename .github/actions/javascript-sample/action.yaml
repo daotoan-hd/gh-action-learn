@@ -1,5 +1,5 @@
-name: Get and cache dependencres
-description: Get the dependencies and cache them
+name: javascript action
+description: javascript action
 
 inputs:
   who-to-greet:  # id of input
