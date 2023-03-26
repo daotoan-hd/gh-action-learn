@@ -1,9 +1,16 @@
 name: Get and cache dependencres
 description: Get the dependencies and cache them
+inputs:
+  caching:
+    description: 'Whether to cache dependencies or not'
+    required: false
+    default: 'true'
+
 runs:
   using: composite
   steps:
     - name: cache dependencies
+      if: inputs.caching == 'true'
       id: cache
       uses: actions/cache@v3
       with:

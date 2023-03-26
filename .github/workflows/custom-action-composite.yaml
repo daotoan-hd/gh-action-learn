@@ -6,6 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/composite-cached-npm
+        with:
+          caching: 'false'
       - name: test the code
         run: echo testing ... 
 
