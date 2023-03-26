@@ -39,6 +39,8 @@ jobs:
           echo "Deploying ... "
 
   report:
+    runs-on: ubuntu-latest
+    if: failure()
     needs:
       - test
       - build
