@@ -1,0 +1,21 @@
+name: Container workflow
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: node:16
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        id: cache
+        with:
+          path: ~/.npm
+          key: cache-{{ hashFiles('**/package-lock.json') }} # use hash for checking change of package file
+      - name: install package
+        run: npm ci
+      - name: curl to nginx service
+        run: curl nginx
+    services:
+      nginx:
+        image: nginx
