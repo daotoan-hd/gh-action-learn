@@ -8,4 +8,4 @@ jobs:
       - name: Javascript action
         uses: ./.github/actions/javascript-sample
         with:
-          who-to-greet: 'HO CHI MINH'
+          who-to-greet: 'devops'
