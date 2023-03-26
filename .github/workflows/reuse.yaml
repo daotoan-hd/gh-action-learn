@@ -7,12 +7,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: upload-artifact
-        uses: upload-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
           name: my-dist
           path: package.json
-  # build:
-  #   needs: test
-  #   uses: ./.github/workflows/reuseable-src.yaml
-  #   with:
-  #     artifact-name: my-dist
+  build:
+    needs: test
+    uses: ./.github/workflows/reuseable-src.yaml
+    with:
+      artifact-name: my-dist
