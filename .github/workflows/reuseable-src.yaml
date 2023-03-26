@@ -1,4 +1,4 @@
-name: matrix workflow
+name: reuseable workflow src
 on: workflow_call
 
 jobs:

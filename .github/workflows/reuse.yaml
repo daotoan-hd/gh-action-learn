@@ -1,4 +1,4 @@
-name: matrix workflow
+name: reuse workflow
 on: push
 
 jobs:
