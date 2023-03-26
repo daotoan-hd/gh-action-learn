@@ -1,4 +1,4 @@
-name: Container workflow
+name: Composite custom action
 on: push
 jobs:
   test:
