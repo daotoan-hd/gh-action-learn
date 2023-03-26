@@ -15,7 +15,7 @@ jobs:
       - name: get artifact
         uses: actions/download-artifact@v3
         with:
-          name: ${{ artifact-name }}
+          name: ${{ inputs.artifact-name }}
       - name: list folder
         run: ls -al
           
