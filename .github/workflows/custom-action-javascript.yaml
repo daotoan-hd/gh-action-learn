@@ -11,4 +11,4 @@ jobs:
         with:
           who-to-greet: 'devops'
       - name: Print infomation
-        run: echo ${{ steps.javascript-action.outputs.time }}
+        run: echo "${{ steps.javascript-action.outputs.time }}"

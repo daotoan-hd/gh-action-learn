@@ -1,28 +1,28 @@
-name: Composite custom action
-on: push
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Load cache and install dependencies
-        id: cache-composite
-        uses: ./.github/actions/composite-cached-npm
-        with:
-          caching: 'false'
-      - name: Print cache status
-        run: echo ${{ steps.cache-composite.outputs.used-cache }}
-      - name: test the code
-        run: echo testing ... 
+# name: Composite custom action
+# on: push
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: Load cache and install dependencies
+#         id: cache-composite
+#         uses: ./.github/actions/composite-cached-npm
+#         with:
+#           caching: 'false'
+#       - name: Print cache status
+#         run: echo ${{ steps.cache-composite.outputs.used-cache }}
+#       - name: test the code
+#         run: echo testing ... 
 
-  build:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - uses: actions/checkout@v3
-      - name: Load cache and install dependencies
-        uses: ./.github/actions/composite-cached-npm
-      - name: Print cache status
-        run: echo ${{ steps.cache-composite.outputs.used-cache }}
-      - name: build the code
-        run: echo building ...
+#   build:
+#     runs-on: ubuntu-latest
+#     needs: test
+#     steps:
+#       - uses: actions/checkout@v3
+#       - name: Load cache and install dependencies
+#         uses: ./.github/actions/composite-cached-npm
+#       - name: Print cache status
+#         run: echo ${{ steps.cache-composite.outputs.used-cache }}
+#       - name: build the code
+#         run: echo building ...
