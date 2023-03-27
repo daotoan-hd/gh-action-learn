@@ -1,4 +1,4 @@
-name: Javascript custom action
+name: docker custom action
 on: push
 jobs:
   test:
