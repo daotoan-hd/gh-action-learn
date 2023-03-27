@@ -10,5 +10,5 @@ jobs:
         uses: ./.github/actions/docker-sample
         with:
           who-to-greet: 'devops'
-      # - name: Print infomation
-      #   run: echo "${{ steps.javascript-action.outputs.time }}"
+      - name: Print infomation
+        run: echo "${{ steps.docker-action.outputs.output }}"
