@@ -6,6 +6,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Javascript action
+        id: javascript-action
         uses: ./.github/actions/javascript-sample
         with:
           who-to-greet: 'devops'
+      - name: Print infomation
+        run: echo ${{ steps.javascript-action.outputs.time }}
